@@ -131,24 +131,26 @@ body {
 
 #top-circle {
     position: absolute;
-    margin-left: 347px;
-    margin-top: 99px;
+    margin-left: 345px;
+    margin-top: 98px;
     width: 42px;
     height: 42px;
     border-radius: 50%;
     background-color: white;
     background-size: 300%;
     background-position: center;
+    border: 1px solid black;
 }
 
 #bottom-circle {
     position: relative;
-    bottom: 18px;
-    left: 6px;
+    bottom: 19px;
+    left: 4px;
     width: 42px;
     height: 42px;
     border-radius: 50%;
     background-color: white;
     background-size: 250%;
     background-position: center;
+    border: 1px solid black;
 }
