@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pokedex.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="./pokedex.js"></script>
+    <title>Kevin's Pokedex</title>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="circle" id="top-circle"></div>
+            <input class="search" placeholder="Search" type="text"/>
+        </div>
+        <div class="photo">
+            <img id="mainphoto"/>
+        </div>
+        <div class="bottom-bar">
+            <div class="likes"><span id="likes-display"></span></div>
+            <div class="name"><span id="bottom-name"></span></div>
+            <div class="caption" id="caption-content"></div>
+            <div class="circle" id="bottom-circle"></div>
+        </div>
+        <div class="jeremy"></div>
+        <div class="name" id="top-name"></div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body {
+    /* background-color: #f2f2f2; */
+    background-color: #e3f6f5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1000px;
+    height: 800px;
+    text-align: center;
+    background-image: url(./images/iphone.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 400px;
+}
+
+.iphone {
+    margin: 0 auto;
+    height: 800px;
+    width: auto;
+}
+
+.top-bar input {
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 143px;
+    height: 20px;
+    top: 116px;
+    border: 2px solid lightgray;
+    border-radius: 6px;
+    color: darkgray;
+    padding-left: 5px;
+}
+
+.top-bar input::placeholder {
+    color: darkgray;
+    text-align: center;
+}
+
+.photo {
+    position: relative;
+    left: 336px;
+    top: 151px;
+    width: 325px;
+    height: 326px;
+    background-image: url(./images/pokemon-landscape.png);
+    pointer-events: none;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    max-width: 325px;
+    max-height: 326px;
+}
+
+.bottom-bar {
+    margin: 190px auto 0 auto;
+    width: 318px;
+    height: 120px;
+}
+
+.likes {
+    position: relative;
+    top: 5px;
+    left: 20px;
+    width: 70px;
+    height: 25px;
+    background-color: #f9f9f9;
+    color: darkslategray;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+
+.name {
+    position: relative;
+    left: 2px;
+    top: 5px;
+    width: 74px;
+    height: 19px;
+    background-color: #f9f9f9;
+    text-align: left;
+    padding-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.caption {
+    position: relative;
+    text-align: left;
+    left: 80px;
+    bottom: 11px;
+    width: 200px;
+    height: 40px;
+    font-weight: 300;
+    font-size: 14px;
+    color: darkgray;
+    background-color: #f9f9f9;
+}
+
+.jeremy {
+    position: relative;
+    left: 618px;
+    top: 41px;
+    width: 25px;
+    height: 23px;
+    background-image: url(./images/jeremy.png);
+    background-size: 120%;
+    background-position: center;
+    border-radius: 50%
+}
+
+#top-name {
+    position: relative;
+    left: 395px;
+    top: -558px;
+}
+
+#bottom-name {
+    position: relative;
+    top: 2px;
+}
+
+#likes-display {
+    position: relative;
+    top: 3px;
+}
+
+#top-circle {
+    position: absolute;
+    margin-left: 347px;
+    margin-top: 99px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: white;
+    background-size: 300%;
+    background-position: center;
+}
+
+#bottom-circle {
+    position: relative;
+    bottom: 18px;
+    left: 6px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: white;
+    background-size: 250%;
+    background-position: center;
+}
