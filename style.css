@@ -67,6 +67,15 @@ ul {
   color: #ffd803;
 }
 
+.navbar a {
+  text-decoration: none;
+  color: #fffffe;
+}
+
+.navbar a:hover {
+  color: #ffd803;
+}
+
 #iframe {
   margin-top: 0;
   width: 100%;
