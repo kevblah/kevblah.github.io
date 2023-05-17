@@ -1,54 +1,46 @@
-const explorePage = document.querySelector('.explore-page')
-const profilePage = document.querySelector('.profile-page')
-const inputfield = document.getElementById('search')
-const profileGrids = document.querySelectorAll('.profile-grid-div')
-const profileSearchButton = document.getElementById('profile-bottom-search-button')
-const profilePicture = document.querySelector('.profile-picture')
-const profileTopName = document.querySelector('.profile-top-name')
-const profileBottomName = document.querySelector('.profile-bottom-name')
-const profileDescription = document.querySelector('.profile-description')
-const exploreGridDivs = document.querySelectorAll('.explore-grid-div')
+const $explorePage = $('.explore-page')
+const $inputfield = $('#search')
+const $exploreGrid = $('.explore-grid')
+const $exploreGridDivs = $('.explore-grid-div')
+const $profilePage = $('.profile-page')
+const $profileTopName = $('.profile-top-name')
+const $profilePicture = $('.profile-picture')
+const $profileBottomName = $('.profile-bottom-name')
+const $profileDescription = $('.profile-description')
+const $profileGrids = $('.profile-grid-div')
+const $profileSearchButton = $('#profile-bottom-search-button')
 
-async function getDogPic() {
-    for (const grid of exploreGridDivs) {
-        let dog = await axios.get('https://dog.ceo/api/breeds/image/random')
-        let image = dog.data.message
-        // grid.innerHTML = `<img src=${image}/>`
-        grid.style.backgroundImage = `url(${image})`
-    }
-}
+// Fill the grids on the explore page with random dog pictures
+$exploreGridDivs.each(async function() {
+    let dog = await axios.get('https://dog.ceo/api/breeds/image/random')
+    let image = dog.data.message
+    $(this).css('background-image', `url(${image})`)
+})
 
-getDogPic()
-
-inputfield.addEventListener("keydown", async function(e) {
+// Call the renderProfile() function once enter is pressed within input
+$inputfield.on("keydown", async function(e) {
     if (e.key === "Enter") {
-        let searchValue = inputfield.value.toLowerCase()
+        let searchValue = $inputfield.prop("value").toLowerCase()
         renderProfile(searchValue)
-        inputfield.value = ''
+        $inputfield.prop("value", '')
     }
 })
 
-profileSearchButton.addEventListener('click', () => {
-    profilePage.style.display = "none";
-    explorePage.style.display = "block";
+// Toggle display on/off for the explore/profile pages
+$profileSearchButton.on('click', () => {
+    $profilePage.css('display', 'none')
+    $explorePage.css('display', 'block')
 })
 
+// Render the profile page, populate with data and images
 async function renderProfile(pokemon) {
     const pokemonData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const pokemonData2 = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)
-
-    let string = pokemonData2.data.flavor_text_entries['0'].flavor_text
-    let sanitizedString = string.replace(/[\r\n]/gm, ' ')
-
+    
+    // Logic to create an array of random sprite url's
     let spritesObj = pokemonData.data.sprites
     let spritesArr = Object.values(spritesObj)
     let images = [];
-
-    profileTopName.innerText = pokemonData.data.name
-    profileBottomName.innerText = pokemonData.data.name
-    profileDescription.innerText = sanitizedString
-    profilePicture.innerHTML = `<img src="${spritesObj.front_default}")/>`
-
     for (let i = 0; i< spritesArr.length; i++) {
         if (spritesArr[i]) {
             let str = spritesArr[i].toString()
@@ -58,12 +50,32 @@ async function renderProfile(pokemon) {
         }
     }
 
+    // assign pokemon name, description, profile pic
+    $profileTopName.text(pokemonData.data.name)
+    $profilePicture.html(`<img src="${spritesObj.front_default}")/>`)
+    $profileBottomName.text(pokemonData.data.name)
+    let string = pokemonData2.data.flavor_text_entries['0'].flavor_text
+    let sanitizedString = string.replace(/[\r\n]/gm, ' ')
+    $profileDescription.text(sanitizedString)
+
+    // generate a random sprite and background for each grid
+    $profileGrids.each(function() {
+        $(this).html(`<img src="${getRandomImage()}"/>`)
+        $(this).css('background-image', `url(${getRandomBackground()})`)
+    })
+
+    // Toggle the display for explore/profile pages
+    $explorePage.css('display', 'none')
+    $profilePage.css('display', 'block')
+
+    // function to get a random pokemon image
     function getRandomImage() {
         const randomIndex = Math.floor(Math.random() * images.length)
         const image = images[randomIndex]
         return image;
     }
 
+    // function to get a random background image
     function getRandomBackground() {
         const backgrounds = [
             './images/bgs/1.png',
@@ -77,14 +89,4 @@ async function renderProfile(pokemon) {
         const bg = backgrounds[randomIndex]
         return bg;
     }
-    
-    profileGrids.forEach((grid) => {
-        grid.innerHTML = `<img src="${getRandomImage()}"/>`
-        grid.style.backgroundImage = `url(${getRandomBackground()})`
-    })
-
-    setTimeout(() => {
-        explorePage.style.display = "none";
-        profilePage.style.display = 'block';
-    }, 10)
 }
