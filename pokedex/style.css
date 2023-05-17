@@ -188,7 +188,7 @@ body {
     margin-top: 7.6%;
     width: 72.65%;
     height: 38.6%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .profile-grid {
